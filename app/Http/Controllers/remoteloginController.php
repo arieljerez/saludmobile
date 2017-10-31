@@ -28,9 +28,9 @@ class remoteloginController extends Controller
         } else {
 
           $pacient = $array['AutenticarPacienteResult']['Pacientes'][0];
-          dd($pacient);
+          //dd($pacient);
           //return re('pacient')->with('error', 'Usuario o Contraseña inválidos');
-          Session::put('pacient', $itemKitItems);
+          \Session::put('pacient', $pacient);
           return redirect(route('pacient'));
         }
     }
