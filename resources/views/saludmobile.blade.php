@@ -32,6 +32,7 @@
                 text-transform: uppercase;
             }
         </style>
+        <link rel="manifest" href="/manifest.json">
     </head>
     <body>
 </br>
@@ -52,8 +53,10 @@
         <div class="flex-center">
             <div class="content">
                 <div class="links">
-                    <a href="/SaludMobile.apk">Bajar App Android</a>
+                    <a class="btn btn-success" href="/SaludMobile.apk">Bajar App Android</a>
                 </div>
+
+
             </div>
         </div>
     </body>

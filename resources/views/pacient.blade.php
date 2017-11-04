@@ -14,14 +14,8 @@
                         </div>
                     @endif
 
-					  <ul>
-					  @foreach ($pacient as $key => $value)
-						<li>{{ $key }}  : {{ $value }}</il>
-					  @endforeach
-					  </ul>
-					
+                    You are logged in!
                 </div>
-				
             </div>
         </div>
     </div>
