@@ -17,7 +17,11 @@ Route::get('/', function () {
 Route::post('/remotelogin', 'remoteloginController@login')->name('remotelogin');
 
 Route::get('/pacient', function () {
-	
+
 	$pacient = \Session::get('pacient');
     return view('pacient')->with(compact('pacient'));
 })->name('pacient');
+
+Route::get('/doctos/dates', function () {
+    return view('doctos_dates');
+});

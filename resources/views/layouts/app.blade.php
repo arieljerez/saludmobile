@@ -13,10 +13,12 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/logo.css') }}" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
 
@@ -29,17 +31,15 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <img src="/logo-nav.jpg" class="logo">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-
-                    </a>
+                    <img src="/logo-nav.jpg" height="40">
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="/doctos/schedule">Horarios</a></li>
+                          <li><a href="/doctos/dates">Turnos</a></li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -48,6 +48,12 @@
                         @guest
 
                         @else
+
+    <ul class="nav navbar-nav navbar-right">
+<li><a href="#">Hola, GBOTTO</a>
+<li><a href="/Login/LogOff">Cerrar sesi&#243;n</a></li>
+</ul>
+
 
                         @endguest
                     </ul>

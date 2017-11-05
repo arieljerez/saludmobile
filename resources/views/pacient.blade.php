@@ -14,14 +14,15 @@
                         </div>
                     @endif
 
-					  <ul>
-					  @foreach ($pacient as $key => $value)
-						<li>{{ $key }}  : {{ $value }}</il>
-					  @endforeach
-					  </ul>
-					
+                  @if (session('pacient'))
+                  					  <ul>
+                  					  @foreach ($pacient as $key => $value)
+                  						<li>{{ $key }}  : {{ $value }}</il>
+                  					  @endforeach
+                  					  </ul>
+                  @endif
                 </div>
-				
+
             </div>
         </div>
     </div>
