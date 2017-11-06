@@ -25,3 +25,6 @@ Route::get('/pacient', function () {
 Route::get('/doctos/dates', function () {
     return view('doctos_dates');
 });
+Route::get('/doctos/schedule', function () {
+    return view('doctos_schedule');
+});
