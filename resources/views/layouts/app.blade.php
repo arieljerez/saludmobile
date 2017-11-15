@@ -15,6 +15,7 @@
     <link href="{{ asset('css/logo.css') }}" rel="stylesheet">
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -49,10 +50,10 @@
 
                         @else
 
-    <ul class="nav navbar-nav navbar-right">
-<li><a href="#">Hola, GBOTTO</a>
-<li><a href="/Login/LogOff">Cerrar sesi&#243;n</a></li>
-</ul>
+                        <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Hola, GBOTTO</a>
+                    <li><a href="/Login/LogOff">Cerrar sesi&#243;n</a></li>
+                    </ul>
 
 
                         @endguest
@@ -66,5 +67,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('js')
 </body>
 </html>

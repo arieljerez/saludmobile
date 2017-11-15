@@ -12,8 +12,8 @@ class remoteloginController extends Controller
 
       $http = new Client;
 
-      $response = $http->request('GET','http://wsturnos.maximoravenna.com/Ravenna/Pacientes.svc/AutenticarPaciente', [
-          'query' => [
+      $response = $http->request('GET',env('APP_REMOTELOGIN',env('APP_URL').'/ws'), [
+        'query' => [
               'Usuario' => $request->user, //'5497032',
               'Clave' => $request->password, // '5497032',
               'CodigoFranquicia' => '1',
@@ -21,7 +21,7 @@ class remoteloginController extends Controller
       ]);
 
         $array = (json_decode((string) $response->getBody(), true));
-        //dd($array);
+
         if ($array['AutenticarPacienteResult']['AuthToken'] == "")
         {
           return view('saludmobile')->with('error', 'Usuario o Contraseña inválidos');

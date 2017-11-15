@@ -17,7 +17,6 @@
                 </div>
 
                 <div class="panel-body">
-//----
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -436,8 +435,6 @@ Los turnos visualizados corresponden a los próximos 10 días corridos
         </ul>
     </div>
 </div>
---///1
-
                 </div>
 
             </div>
