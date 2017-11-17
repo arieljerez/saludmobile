@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/logo.css') }}" rel="stylesheet">
+    @yield('style')
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -40,6 +41,8 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/doctos/schedule">Horarios</a></li>
                           <li><a href="/doctos/dates">Turnos</a></li>
+                          <li><a href="/pacient">Paciente</a></li>
+                          <li><a href="/pacient/healt_insurance/list">Coberturas</a></li>
 
                     </ul>
 

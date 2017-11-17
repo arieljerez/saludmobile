@@ -53,3 +53,7 @@ Route::get('/ws', function () {
 Route::get('/dates/registration', function () {
     return view('date_registration');
 });
+
+Route::get('/pacient/healt_insurance/list', function () {
+    return view('pacient_health_insurance');
+});

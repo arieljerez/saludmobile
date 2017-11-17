@@ -2,114 +2,77 @@
 
 @section('content')
 
-<div class="container">
-  <div class="row">
 
-    <section>
-
-            <ul class="nav nav-tabs" role="tablist">
-
-                <li role="presentation" class="nav-item">
-                    <a href="#step1" class="nav-link active" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
-                            1
-                        </a>
-                </li>
-
-                <li role="presentation" class="nav-item">
-                    <a href="#step2" class="nav-link disabled" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
-                            2
-                        </a>
-                </li>
-
-                <li role="presentation" class="nav-item">
-                    <a href="#step3" class="nav-link disabled" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
-                            3
-                        </a>
-                </li>
-            </ul>
-
-
-                <div class="tab-content">
-                    <div class="tab-pane active" role="tabpanel" id="step1">
-                        <h3>Step 1</h3>
-                        <p>This is step 1</p>
-                        <ul class="list-inline pull-xs-right">
-                            <li class="list-inline-item">
-                                <button type="button" class="btn btn-primary next-step">Save and continue</button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="tab-pane" role="tabpanel" id="step2">
-                        <h3>Step 2</h3>
-                        <p>This is step 2</p>
-                        <ul class="pull-xs-right">
-                            <li class="list-inline-item">
-                                <button type="button" class="btn btn-default prev-step">Previous</button>
-                            </li>
-                            <li class="list-inline-item">
-                                <button type="button" class="btn btn-primary next-step">Save and continue</button>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="tab-pane" role="tabpanel" id="step3">
-                        <h3>Step 3</h3>
-                        <p>This is step 3</p>
-                        <ul class="pull-xs-right">
-                            <li class="list-inline-item">
-                                <button type="button" class="btn btn-default prev-step">Previous</button>
-                            </li>
-                            <li class="list-inline-item">
-                                <button type="button" class="btn btn-primary next-step">Save and continue</button>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-
-        </section>
+<div class="stepwizard">
+    <div class="stepwizard-row setup-panel">
+      <div class="stepwizard-step col-xs-3 col-md-3">
+        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+        <p>Step 1</p>
       </div>
+      <div class="stepwizard-step col-xs-3 col-md-3">
+        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+        <p>Step 2</p>
+      </div>
+      <div class="stepwizard-step col-xs-3 col-md-3">
+        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+        <p>Step 3</p>
+      </div>
+    </div>
 </div>
+
+  <form role="form" action="" method="post">
+    <div class="row setup-content" id="step-1">
+      <div class="col-xs-12 col-md-8">
+        <div class="col-md-12">
+          <h3> Step 1</h3>
+          <div class="form-group">
+            <label class="control-label">First Name</label>
+            <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Enter First Name"  />
+          </div>
+          <div class="form-group">
+            <label class="control-label">Last Name</label>
+            <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Last Name" />
+          </div>
+          <div class="form-group">
+            <label class="control-label">Address</label>
+            <textarea required="required" class="form-control" placeholder="Enter your address" ></textarea>
+          </div>
+          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+        </div>
+      </div>
+    </div>
+    <div class="row setup-content" id="step-2">
+      <div class="col-xs-12 col-md-8">
+        <div class="col-md-12">
+          <h3> Step 2</h3>
+          <div class="form-group">
+            <label class="control-label">Company Name</label>
+            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+          </div>
+          <div class="form-group">
+            <label class="control-label">Company Address</label>
+            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+          </div>
+          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+        </div>
+      </div>
+    </div>
+    <div class="row setup-content" id="step-3">
+      <div class="col-xs-12 col-md-8">
+        <div class="col-md-12">
+          <h3> Step 3</h3>
+          <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+@endsection
+@section('style')
+    <link href="{{ asset('css/tab_wizard.css') }}" rel="stylesheet">
 @endsection
 
-
 @section('js')
-<script>
-$(document).ready(function () {
-    //Initialize tooltips
-    $('.nav-tabs > li a[title]').tooltip();
-
-    //Wizard
-    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-
-        var $target = $(e.target);
-
-        if ($target.parent().hasClass('disabled')) {
-            return false;
-        }
-    });
-
-    $(".next-step").click(function (e) {
-
-        var $active = $('.nav-tabs li > a.active');
-        $active.parent().next().removeClass('disabled');
-        nextTab($active);
-
-    });
-    $(".prev-step").click(function (e) {
-
-        var $active = $('.nav-tabs li>a.active');
-        prevTab($active);
-
-    });
-});
-
-function nextTab(elem) {
-    $(elem).parent().next().find('a[data-toggle="tab"]').click();
-
-}
-function prevTab(elem) {
-    $(elem).parent().prev().find('a[data-toggle="tab"]').click();
-}
-</script>
+<script src="{{ asset('js/tab_wizard.js') }}"></script>
 @endsection
