@@ -54,6 +54,15 @@ Route::get('/dates/registration', function () {
     return view('date_registration');
 });
 
-Route::get('/pacient/healt_insurance/list', function () {
+/*Route::get('/pacient/healt_insurance/list', function () {
     return view('pacient_health_insurance');
 });
+*/
+Route::get('/pacient/healt_insurance/list', 'PacientHealtInsuranceController@index')
+    ->name('pacient.healt_insurance.list');
+
+Route::get('/pacient/healt_insurance/create', 'PacientHealtInsuranceController@create')
+    ->name('pacient/healt_insurance/create');
+
+Route::post('/pacient/healt_insurance/store', 'PacientHealtInsuranceController@store')
+    ->name('pacient/healt_insurance/store');
