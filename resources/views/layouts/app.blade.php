@@ -43,6 +43,7 @@
                           <li><a href="/doctos/dates">Turnos</a></li>
                           <li><a href="/pacient">Paciente</a></li>
                           <li><a href="/pacient/healt_insurance/list">Coberturas</a></li>
+                          <li><a href="/dates/registration">Nuevo Turno</a></li>
 
                     </ul>
 
