@@ -169,18 +169,19 @@
                   @php
                     $fechas = array('Lunes','Martes','Miercoles','Jueves','Viernes');
                   @endphp
-
+                        <div class="panel-group" id="accordion_especialidad_fecha1">
+                        <div class="panel panel-default">
                   @foreach ($fechas as $fecha)
 
                     @php
                       $label = $loop->index > 0 ?  "success": "danger";
                       $index = $loop->index;
                     @endphp
-                      <div class="panel-group">
-                        <div class="panel panel-default">
+
+
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" href="#fecha_collapse{{$loop->index}}">
+                              <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion_especialidad_fecha1" href="#fecha_collapse{{$loop->index}}">
                                 <span aria-hidden="true" class="fa fa-calendar" style="margin-right: 3px;"></span>
                                 2{{$loop->index}}/11/2017 {{$fecha}}</a>
 
@@ -196,17 +197,23 @@
                               </div>
                               @elseif($index > 0)
                                 <div class="list-group" style="background-color: ligthgrey">
-                                  <a href="#" class="list-group-item nextBtn"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00  <span class="fa fa-user-md"></span> Carlota White </a>
-                                  <a href="#" class="list-group-item nextBtn"><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00 <span class="fa fa-user-md"></span> Carlota White </a>
-                                  <a href="#" class="list-group-item nextBtn"><i class="fa fa-clock-o" aria-hidden="true"></i> 11:00 <span class="fa fa-user-md"></span> Carlota White </a>
+                                  <a href="#" class="list-group-item nextBtn"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00  <span class="fa fa-user-md"></span> Carlota White
+                                    <span class="btn btn-success btn-sm nextBtn pull-right" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-save" aria-hidden="true"></i> </span>
+                                  </a>
+                                  <a href="#" class="list-group-item nextBtn"><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00 <span class="fa fa-user-md"></span> Carlota White
+                                    <span class="btn btn-success btn-sm nextBtn pull-right" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-save" aria-hidden="true"></i> </span>
+                                  </a>
+                                  <a href="#" class="list-group-item nextBtn"><i class="fa fa-clock-o" aria-hidden="true"></i> 11:00 <span class="fa fa-user-md"></span> Carlota White
+                                    <span class="btn btn-success btn-sm nextBtn pull-right" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-save" aria-hidden="true"></i> </span>
+                                  </a>
                                 </div>
                               @endif
 
                           </div>
-                        </div>
-                      </div>
-                    @endforeach
 
+                    @endforeach
+                  </div>
+                        </div>
               </div>
             </div>
 
@@ -217,7 +224,8 @@
                 </h4>
               </div>
               <div id="especialidad_obstetricia_collapse1" class="panel-collapse collapse">
-
+                <div class="panel-group" id="accordion_obstetricia_fecha1">
+                  <div class="panel panel-default">
                   @php
                     $fechas = array('Lunes','Martes','Miercoles','Jueves','Viernes');
                   @endphp
@@ -228,18 +236,20 @@
                       $label = $loop->index > 0 ?  "success": "danger";
                       $index = $loop->index;
                     @endphp
-                      <div class="panel-group">
-                        <div class="panel panel-default">
+
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" href="#fecha_collapse{{$loop->index}}">
+                              <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion_obstetricia_fecha1"href="#Obstetricia_fecha_collapse{{$loop->index}}">
                                 <span aria-hidden="true" class="fa fa-calendar" style="margin-right: 3px;"></span>
                                 2{{$loop->index}}/11/2017 {{$fecha}}</a>
-
+                              @if ($index == 0)
                               <span class="label label-{{$label}}" style="float: right; margin-right: 3px;">{{$loop->index}}</span>
+                              @else
+                              <span class="label label-{{$label}}" style="float: right; margin-right: 3px;">3</span>
+                              @endif
                             </h4>
                           </div>
-                          <div id="fecha_collapse{{$loop->index}}" class="panel-collapse collapse">
+                          <div id="Obstetricia_fecha_collapse{{$loop->index}}" class="panel-collapse collapse">
                               @if ($index == 0)
                               <div class="list-group" style="background-color: ligthgrey">
                                 <li class="list-group-item" disabled><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00  <span class="fa fa-user-md"></span> Carlota White </li>
@@ -248,17 +258,23 @@
                               </div>
                               @elseif($index > 0)
                                 <div class="list-group" style="background-color: ligthgrey">
-                                  <a href="#" class="list-group-item nextBtn"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00  <span class="fa fa-user-md"></span> Carlota White </a>
-                                  <a href="#" class="list-group-item nextBtn"><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00 <span class="fa fa-user-md"></span> Carlota White </a>
-                                  <a href="#" class="list-group-item nextBtn"><i class="fa fa-clock-o" aria-hidden="true"></i> 11:00 <span class="fa fa-user-md"></span> Carlota White </a>
+                                  <a href="#" class="list-group-item nextBtn"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00  <span class="fa fa-user-md"></span> Carlota White
+                                      <span class="btn btn-success btn-sm nextBtn pull-right" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-save" aria-hidden="true"></i> </span>
+                                  </a>
+                                  <a href="#" class="list-group-item nextBtn"><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00 <span class="fa fa-user-md"></span> Carlota White
+                                    <span class="btn btn-success btn-sm nextBtn pull-right" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-save" aria-hidden="true"></i> </span>
+                                  </a>
+                                  <a href="#" class="list-group-item nextBtn"><i class="fa fa-clock-o" aria-hidden="true"></i> 11:00 <span class="fa fa-user-md"></span> Carlota White
+                                    <span class="btn btn-success btn-sm nextBtn pull-right" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-save" aria-hidden="true"></i> </span>
+                                  </a>
                                 </div>
                               @endif
 
                           </div>
-                        </div>
-                      </div>
-                    @endforeach
 
+                    @endforeach
+                  </div>
+                </div>
 
               </div>
             </div>
@@ -279,6 +295,31 @@
 
   </form>
 
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Confirmacion de Turno</h4>
+        </div>
+        <div class="modal-body">
+          <p>¿Confirma la reseva del turno?</p>
+          Dia: 20/11/2017
+          Hora: 11.00
+          Especialidad: Medica Clinica
+          Mèdico: Gustavo Ordoñes
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Sí, Confirmo</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 @endsection
 @section('style')
