@@ -12,26 +12,35 @@
 
 Route::get('/', function () {
     return view('saludmobile');
-});
+})->name('inicio');
 
 Route::post('/remotelogin', 'remoteloginController@login')->name('remotelogin');
+
+Route::get('/login/password_reset', function () {
+    return view('auth.password_reset');
+})->name('recuperar_acceso');
+
+Route::get('/login/register', function () {
+    return view('auth.register');
+})->name('registro');
+
 
 Route::get('/pacient', function () {
 
 	$session = \Session::get('pacient');
   $pacient = new stdClass();
 
-$pacient->apellido = $session['Apellido'];
-$pacient->codigocobertura = $session['CodigoCobertura'];
-$pacient->codigopaciente = $session["CodigoPaciente"];
-$pacient->codigopersona = $session["CodigoPersona"];
-$pacient->codigoplan = $session["CodigoPlan"];
-$pacient->documento = $session["Documento"];
-$pacient->FechaNacimiento = str_replace("-"," ",substr($session["FechaNacimiento"],6,18));// => "/Date(-735598800000-0300)/"
+  $pacient->apellido = $session['Apellido'];
+  $pacient->codigocobertura = $session['CodigoCobertura'];
+  $pacient->codigopaciente = $session["CodigoPaciente"];
+  $pacient->codigopersona = $session["CodigoPersona"];
+  $pacient->codigoplan = $session["CodigoPlan"];
+  $pacient->documento = $session["Documento"];
+  $pacient->FechaNacimiento = str_replace("-"," ",substr($session["FechaNacimiento"],6,18));// => "/Date(-735598800000-0300)/"
 
-$pacient->Mail = $session["Mail"];
-$pacient->Nombre = $session["Nombre"];
-$pacient->Sexo = $session["Sexo"];
+  $pacient->Mail = $session["Mail"];
+  $pacient->Nombre = $session["Nombre"];
+  $pacient->Sexo = $session["Sexo"];
 
 
     return view('pacient')->with(compact('pacient'));

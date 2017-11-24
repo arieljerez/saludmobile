@@ -15,6 +15,7 @@
         <style>
             html, body {
                   background-color: #E2E2E0;
+                  margin-top: 10px;
             }
             .flex-center {
                 align-items: center;
@@ -32,29 +33,48 @@
                 text-transform: uppercase;
             }
         </style>
-    </head>
-    <body>
-</br>
-      @if (isset($error))
-      <div class="alert alert-danger" role="alert">
-        {{$error}}
-      </div>
-      @endif
-</br>
+</head>
+<body>
+<div class="container">
 
-        <div class="container">
-          <div class = 'flex-center'>
-              <img src="/logo-inicio.png" width="200">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+          @if (isset($error))
+          <div class="alert alert-danger" role="alert">
+            {{$error}}
           </div>
-            @include('login_remote_form')
-        </div> <!-- /container -->
-</br>
-        <div class="flex-center">
-            <div class="content">
-                <div class="links">
-                    <a href="/SaludMobile.apk">Bajar App Android</a>
-                </div>
-            </div>
-        </div>
-    </body>
+          @endif
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 flex-center">
+      <img src="/logo-inicio.png" width="200">
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        @include('auth.login_remote_form')
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 flex-center">
+      <div class="links">
+        <a href="/SaludMobile.apk">Bajar App Android</a>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+
+</div>
+</body>
 </html>
