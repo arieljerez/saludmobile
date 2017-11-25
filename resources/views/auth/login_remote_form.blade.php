@@ -13,7 +13,7 @@
     </div>
     <div class="form-group">
       <button class="btn btn-md btn-primary btn-block" type="submit">Ingresar</button>
-      <a href="" class="btn btn-success btn-block" type="button">Registrarme</a>
+      <a href="{{ route('registro')}}" class="btn btn-success btn-block" type="button">Registrarme</a>
     </div>
     {{ csrf_field() }}
   </form>
