@@ -1,0 +1,65 @@
+{
+	"AutenticarPacienteResult":
+		{
+			"AuthToken":"iRwlkA8n1UjdYC4hbybFQbQZeLIKqOVQ",
+			"EstadoRespuesta":
+				{
+					"CodigoRespuesta":0,
+					"Mensaje":"OK"
+				},
+			"Pacientes":
+				[
+					{
+						"Apellido":"SYRIANI",
+						"CodigoCobertura": 0,
+						"CodigoPaciente": 71666,
+						"CodigoPersona": 72942,
+						"CodigoPlan": 1,
+						"Documento": "26587435",
+						"FechaNacimiento": "\/Date(-735598800000-0300)\/",
+						"Mail": "bebasolv@gmail.com",
+						"Nombre": "OLGA",
+						"Sexo": "F"
+					}
+				]
+		}
+}
+//coberturas
+{
+	[
+		{
+			"Codigo": 13213,
+			"Descripcion": "SMG",
+			"PlanCodigo": 212,
+			"PlanDescripcion": "Docthos",
+			"NumeroAfiliado": "80006501131",
+			"CodigoTipoContratacion": 9393,		
+			"TipoContratacionDescripcion": "Privado"
+		}
+	],
+	[
+		{
+			"Codigo": 43213,
+			"Descripcion": "OSDE",
+			"PlanCodigo": 10210,
+			"PlanDescripcion": "PLAN 210",
+			"NumeroAfiliado": "70006501132",
+			"TipoContratacionCodigo": 9394,		
+			"TipoContratacionDescripcion": "Laboral"
+		}
+	],
+	[
+		{
+			"Codigo": 10000,
+			"Descripcion": "PRIVADO",
+			"PlanCodigo": 11000,
+			"PlanDescripcion": "PRIVADO VIP",
+			"NumeroAfiliado": "",
+			"TipoContratacionCodigo": 9393,		
+			"TipoContratacionDescripcion": "Privado"
+		}
+	]
+}	
+
+CDR650MB
+	

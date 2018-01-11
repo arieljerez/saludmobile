@@ -40,11 +40,11 @@
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-          @if (isset($error))
-          <div class="alert alert-danger" role="alert">
-            {{$error}}
-          </div>
-          @endif
+      @if (isset($error))
+        <div class="alert alert-danger" role="alert">
+          {{$error}}
+        </div>
+      @endif
     </div>
     <div class="col-md-4"></div>
   </div>
