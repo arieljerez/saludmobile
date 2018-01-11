@@ -20,7 +20,11 @@ class RecuperarAccesoController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         return view('auth.recuperar_acceso');
+=======
+        return view('Auth.recuperar_acceso');
+>>>>>>> 8b744b0bcd3eb0ac75fdf10eaf09e555c568be9c
     }
 
     /**
