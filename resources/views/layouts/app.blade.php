@@ -11,8 +11,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/logo.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+
     @yield('style')
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -39,12 +41,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="/doctos/schedule">Horarios</a></li>
-                          <li><a href="/doctos/dates">Turnos</a></li>
-                          <li><a href="/pacient">Paciente</a></li>
-                          <li><a href="/pacient/healt_insurance/list">Coberturas</a></li>
-                          <li><a href="/dates/registration">Nuevo Turno</a></li>
-
+                      @include('layouts.navbar_left_side')
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -55,9 +52,9 @@
                         @else
 
                         <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Hola, GBOTTO</a>
-                    <li><a href="/Login/LogOff">Cerrar sesi&#243;n</a></li>
-                    </ul>
+                          <li><a href="#">Hola, {{ Auth::user()->full_name }} </a>
+                          <li><a href="/Login/LogOff">Cerrar sesi&#243;n</a></li>
+                        </ul>
 
 
                         @endguest

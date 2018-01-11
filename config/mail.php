@@ -99,8 +99,8 @@ return [
     |
     */
 
-    'sendmail' => '/usr/sbin/sendmail -bs',
-
+    //'sendmail' => '/usr/sbin/sendmail -bs',
+    'sendmail' => 'C:/laragon/bin/sendmail/sendmail.exe -bs',
     /*
     |--------------------------------------------------------------------------
     | Markdown Mail Settings

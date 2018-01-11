@@ -5,7 +5,6 @@
 
 @section('content_title',__('Coberturas: Agregar'))
 
-
   <form class="form-class" method="post" action="{{route('pacient/healt_insurance/store')}}">
 
       <div class="form-group col-md-4 col-md-offset-1">

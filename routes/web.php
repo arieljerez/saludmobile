@@ -10,41 +10,67 @@
 |
 */
 
+use App\Http\Controllers\Auth;
+
 Route::get('/', function () {
     return view('saludmobile');
-})->name('inicio');
+})->name('login');
 
-Route::post('/remotelogin', 'remoteloginController@login')->name('remotelogin');
+Route::post('/remotelogin', 'remoteloginController@handleRemoteCallback')
+  ->name('remotelogin');
 
-Route::get('/login/password_reset', function () {
-    return view('auth.password_reset');
-})->name('recuperar_acceso');
+Route::get('/inicio','InicioController@index')->name('inicio');
 
-Route::get('/login/register', function () {
+Route::resource('turnos','TurnoRegistroController');
+
+/* recuperacion de acceso */
+Route::get('/acceso/recuperar','Auth\RecuperarAccesoController@index')
+    ->name('recuperar_acceso')
+    ->middleware('guest');
+    
+Route::post('/acceso/recuperar','Auth\RecuperarAccesoController@recuperar')->name('recuperar_acceso');
+
+Route::get('/acceso/confirmar_mail','Auth\RecuperarAccesoController@confirmarMail')
+          ->name('acceso_confirmar_email');
+Route::post('/acceso/confirmar_mail','Auth\RecuperarAccesoController@enviarMail')
+          ->name('acceso_confirmar_email');
+
+Route::get('acceso/mailtest', function(){
+          $body = [
+                    'email' =>"nombre_usuario@dominio.eo",
+                    'dni' => '26587435',
+                    'fecha_nacimiento' => '1978-10-14',
+                    'clave' => 'ois98sd',
+                  ];
+
+          return view("mail.recuperar_acceso",$body);
+});
+/************************************************************************************************/
+
+Route::get('/acceso/registro', function () {
     return view('auth.register');
 })->name('registro');
 
+/************************************************************************************************/
 
-Route::get('/pacient', function () {
+Route::get('/Login/LogOff', function () {
+    \Auth::LogOut();
+    return redirect('/');
+})->name('LogOff');
 
-	$session = \Session::get('pacient');
-  $pacient = new stdClass();
+/************************************************************************************************/
 
-  $pacient->apellido = $session['Apellido'];
-  $pacient->codigocobertura = $session['CodigoCobertura'];
-  $pacient->codigopaciente = $session["CodigoPaciente"];
-  $pacient->codigopersona = $session["CodigoPersona"];
-  $pacient->codigoplan = $session["CodigoPlan"];
-  $pacient->documento = $session["Documento"];
-  $pacient->FechaNacimiento = str_replace("-"," ",substr($session["FechaNacimiento"],6,18));// => "/Date(-735598800000-0300)/"
+Route::get('/misdatos', 'MisDatosController@index')->name('misdatos');
 
-  $pacient->Mail = $session["Mail"];
-  $pacient->Nombre = $session["Nombre"];
-  $pacient->Sexo = $session["Sexo"];
+/************************************************************************************************/
 
+Route::get('/ws', function (Request $request) {
+    $body =  '{"AutenticarPacienteResult":{"AuthToken":"iRwlkA8n1UjdYC4hbybFQbQZeLIKqOVQ","EstadoRespuesta":{"CodigoRespuesta":0,"Mensaje":"OK"},"Pacientes":[{"Apellido":"SYRIANI","CodigoCobertura":0,"CodigoPaciente":71666,"CodigoPersona":72942,"CodigoPlan":1,"Documento":"26587435","FechaNacimiento":"\/Date(-735598800000-0300)\/","Mail":"bebasolv@gmail.com","Nombre":"OLGA","Sexo":"F"}]}}';
+    $array = (json_decode((string) $body, true));
+    return response()->json($array);
+});
 
-    return view('pacient')->with(compact('pacient'));
-})->name('pacient');
+/*
 
 Route::get('/doctos/dates', function () {
     return view('doctos_dates');
@@ -52,21 +78,15 @@ Route::get('/doctos/dates', function () {
 Route::get('/doctos/schedule', function () {
     return view('doctos_schedule');
 });
-
-Route::get('/ws', function () {
-    $body =  '{"AutenticarPacienteResult":{"AuthToken":"iRwlkA8n1UjdYC4hbybFQbQZeLIKqOVQ","EstadoRespuesta":{"CodigoRespuesta":0,"Mensaje":"OK"},"Pacientes":[{"Apellido":"SYRIANI","CodigoCobertura":0,"CodigoPaciente":71666,"CodigoPersona":72942,"CodigoPlan":1,"Documento":"5497032","FechaNacimiento":"\/Date(-735598800000-0300)\/","Mail":"bebasolv@gmail.com","Nombre":"OLGA","Sexo":"F"}]}}';
-    $array = (json_decode((string) $body, true));
-    return response()->json($array);
-});
-
 Route::get('/dates/registration', function () {
     return view('date_registration');
 });
 
-/*Route::get('/pacient/healt_insurance/list', function () {
+Route::get('/pacient/healt_insurance/list', function () {
+
     return view('pacient_health_insurance');
 });
-*/
+
 Route::get('/pacient/healt_insurance/list', 'PacientHealtInsuranceController@index')
     ->name('pacient.healt_insurance.list');
 
@@ -75,3 +95,4 @@ Route::get('/pacient/healt_insurance/create', 'PacientHealtInsuranceController@c
 
 Route::post('/pacient/healt_insurance/store', 'PacientHealtInsuranceController@store')
     ->name('pacient/healt_insurance/store');
+*/

@@ -2,7 +2,7 @@
   <form class="form-signin" method="post" action="{{'remotelogin'}}">
     <div class="form-group">
       <label for="dni" class="sr-only control-label">DNI:</label>
-      <input type="number" name="dni" class="form-control" placeholder="DNI" required autofocus>
+      <input type="number" name="user" class="form-control" placeholder="DNI" required autofocus>
     </div>
     <div class="form-group">
       <label for="password" class="sr-only control-label">Contraseña:</label>
