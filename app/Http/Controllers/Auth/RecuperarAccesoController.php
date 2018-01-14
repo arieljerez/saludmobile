@@ -5,13 +5,18 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\FakeApiRemotoController as FakeApiRemotoController;
+use App\Mail\RecuperarAcceso;
 
 class RecuperarAccesoController extends Controller
 {
 
-    public function __construct()
+    private $apiRemoto;
+
+    public function __construct(FakeApiRemotoController $apiRemoto)
     {
         $this->middleware('guest');
+        $this->apiRemoto = $apiRemoto;
     }
     /**
      * Display a listing of the resource.
@@ -31,8 +36,8 @@ class RecuperarAccesoController extends Controller
      */
     public function recuperar(Request $request)
     {
-      /*  $validator =  Validator::make($request->toarray(), [
-            'documento' => 'required|numeric|size:10',
+        $validator =  Validator::make($request->toarray(), [
+            'documento' => 'required|numeric',
             'fecha_nacimiento' => 'required|date',
         ]);
 
@@ -41,30 +46,31 @@ class RecuperarAccesoController extends Controller
                                 ->withErrors($validator)
                                 ->withInput();
         }
-      */
 
       $documento = $request->input('documento');
       $fecha_nacimiento = $request->input('fecha_nacimiento');
 
-      $clave = $this->validarDatos($documento,  $fecha_nacimiento);
-
-      session(['documento' =>   $documento ]);
-      session(['fecha_nacimiento' =>   $fecha_nacimiento ]);
-      session(['clave' => $clave ]);
-
-      return $clave
-          ? redirect(route("acceso_confirmar_email")) :
-          redirect(route("registro"))->withInput();
+      if ($this->validarDatos($documento,  $fecha_nacimiento,$datos)){
+        session(['datos' => $datos]);
+        return redirect(route("acceso_confirmar_email"));
+      }
+      return redirect(route("registro"));
     }
 
-    public function validarDatos($documento,$fecha_nacimiento)
+    public function validarDatos($documento,$fecha_nacimiento, &$datos)
     {
-      return $documento == '26587435'? "pvw409q": false ;
+      $respuesta =  $this->apiRemoto->recuperarAcceso($documento, $fecha_nacimiento);
+
+      $datos = $respuesta['datos'];
+
+      return ($respuesta["resultado"] == "ok");
     }
 
     public function confirmarMail()
     {
-        return view('auth.confirmar_mail');
+        $datos = session('datos');
+        $email = $datos['email'];
+        return view('auth.confirmar_mail')->with(compact('email'));
     }
 
 
@@ -79,22 +85,22 @@ class RecuperarAccesoController extends Controller
                                 ->withErrors($validator)
                                 ->withInput();
         }
-        $body = [
-                  'email' => $request->get('email'),
-                  'dni' => session('documento'),
-                  'fecha_nacimiento' =>session('fecha_nacimiento'),
-                  'clave' => session('clave'),
-                ];
 
-        \Mail::send("mail.recuperar_acceso",$body, function($message) {
+        $datos = session('datos');
+        $email = $datos['email'];
 
-            $message->to(Request()->get('email'), Request()->get('email'))
-                ->subject('Recuperar contraseña');
-        });
+        \Mail::to(Request()->get('email'))
+          ->send(new RecuperarAcceso(
+              $request->get('email'),
+              $datos['documento'],
+              $datos['fecha_nacimiento'],
+              $datos['clave']
+          ));
         session()->forget("documento");
+        session()->forget("datos");
+        $confirmado = true;
 
-       return Redirect()->back()->with("email",$request->input("email"));
-
+       return view('auth.confirmar_mail')->with(compact('email','confirmado'));
     }
 
 

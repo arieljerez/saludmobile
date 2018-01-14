@@ -27,7 +27,7 @@ Route::resource('turnos','TurnoRegistroController');
 Route::get('/acceso/recuperar','Auth\RecuperarAccesoController@index')
     ->name('recuperar_acceso')
     ->middleware('guest');
-    
+
 Route::post('/acceso/recuperar','Auth\RecuperarAccesoController@recuperar')->name('recuperar_acceso');
 
 Route::get('/acceso/confirmar_mail','Auth\RecuperarAccesoController@confirmarMail')
@@ -36,14 +36,13 @@ Route::post('/acceso/confirmar_mail','Auth\RecuperarAccesoController@enviarMail'
           ->name('acceso_confirmar_email');
 
 Route::get('acceso/mailtest', function(){
-          $body = [
-                    'email' =>"nombre_usuario@dominio.eo",
-                    'dni' => '26587435',
-                    'fecha_nacimiento' => '1978-10-14',
-                    'clave' => 'ois98sd',
-                  ];
 
-          return view("mail.recuperar_acceso",$body);
+          return new  App\Mail\RecuperarAcceso(
+                      'arieljere@gmail.com',
+                      '26587435',
+                      '14101978',
+                      'clave1234');
+          ;
 });
 /************************************************************************************************/
 
@@ -69,6 +68,9 @@ Route::get('/ws', function (Request $request) {
     $array = (json_decode((string) $body, true));
     return response()->json($array);
 });
+/*****************************************/
+
+Route::get('/api/recuperarAcceso/{documento}/{fecha_nacimiento}', 'FakeApiRemotoController@recuperarAcceso');
 
 /*
 

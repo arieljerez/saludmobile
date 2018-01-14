@@ -1,7 +1,7 @@
 @extends('auth.app')
 @section('content')
 
-@if (session()->has('email'))
+@isset($confirmado)
 <div class="row">
     <div class=" col-md-6 col-md-offset-3"  >
       <div class="panel panel-default panel-success">
@@ -10,7 +10,7 @@
 
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
-              <p class="text-info">Se envió su acceso a {{session('email')}}</p>
+              <p class="text-info">Se envió su acceso a {{ $email }}</p>
               <a href="{{ route('login') }}" class="btn btn-success pull-right">Iniciar sesión</a>
             </div>
           </div>
@@ -33,9 +33,9 @@
                   <div class="col-md-8 col-md-offset-2">
                     <div class="form-group has-success">
                       <label class="control-label" for="email">Correo</label>
-                      <input type="text" class="form-control input-error" id="email" name="email">
+                      <input type="text" class="form-control input-error" id="email" name="email" value="{{ $email }}">
                       <label class="control-label" for="email">Correo Confirmación:</label>
-                      <input type="text" class="form-control input-error" id="email_confirmation" name="email_confirmation">
+                      <input type="text" class="form-control input-error" id="email_confirmation" name="email_confirmation" >
                     </div>
                   </div>
               </div>
@@ -52,5 +52,5 @@
   </div>
   {{ csrf_field() }}
 </form>
-@endif
+@endisset
 @endsection
