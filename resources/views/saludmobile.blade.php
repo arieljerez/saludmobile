@@ -52,7 +52,7 @@
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4 flex-center">
-      <img src="/logo-inicio.png" width="200">
+      <img src="{{ asset('logo-inicio.png') }}" width="200">
     </div>
     <div class="col-md-4"></div>
   </div>
@@ -69,7 +69,7 @@
     <div class="col-md-4"></div>
     <div class="col-md-4 flex-center">
       <div class="links">
-        <a href="/SaludMobile.apk">Bajar App Android</a>
+        <a href="{{ asset('SaludMobile.apk') }}">Bajar App Android</a>
       </div>
     </div>
     <div class="col-md-4"></div>
