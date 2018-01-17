@@ -50,19 +50,19 @@ class RecuperarAccesoController extends Controller
       $documento = $request->input('documento');
       $fecha_nacimiento = $request->input('fecha_nacimiento');
 
-      if ($this->validarDatos($documento,  $fecha_nacimiento,$datos)){
+      if ($this->validarDatos($documento,  $fecha_nacimiento, $datos, $mensaje)){
         session(['datos' => $datos]);
         return redirect(route("acceso_confirmar_email"));
       }
-      return redirect(route("registro"));
+        return view('auth.register',compact(['documento','mensaje','fecha_nacimiento']));
     }
 
-    public function validarDatos($documento,$fecha_nacimiento, &$datos)
+    public function validarDatos($documento,$fecha_nacimiento, &$datos, &$mensaje)
     {
       $respuesta =  $this->apiRemoto->recuperarAcceso($documento, $fecha_nacimiento);
 
       $datos = $respuesta['datos'];
-
+      $mensaje = $respuesta['mensaje'];
       return ($respuesta["resultado"] == "ok");
     }
 

@@ -46,9 +46,8 @@ Route::get('acceso/mailtest', function(){
 });
 /************************************************************************************************/
 
-Route::get('/acceso/registro', function () {
-    return view('auth.register');
-})->name('registro');
+Route::get('/acceso/registro', 'Auth\RegistroController@create')->name('registro');
+Route::post('/acceso/registro', 'Auth\RegistroController@store')->name('registro');
 
 /************************************************************************************************/
 
