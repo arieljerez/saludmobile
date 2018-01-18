@@ -15,7 +15,9 @@ class RegistroController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $documento = '';
+        $fecha_nacimiento = '';
+        return view('auth.register',compact(['documento','fecha_nacimiento']));
     }
 
     /**
@@ -26,7 +28,14 @@ class RegistroController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->input());
+        //dd($request->input());
+
+        $paciente = new \App\saludmobile\RegistroPaciente($request->input());
+
+        \Mail::to(Request()->get('email'))
+          ->send( new \App\Mail\RegistroPaciente($paciente) );
+
+        return new \App\Mail\RegistroPaciente($paciente);
     }
 
 }

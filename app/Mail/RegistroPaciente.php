@@ -11,14 +11,16 @@ class RegistroPaciente extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $registropaciente;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(\App\saludmobile\RegistroPaciente $registropaciente)
     {
-        //
+        $this->registropaciente = $registropaciente;
     }
 
     /**

@@ -44,6 +44,24 @@ Route::get('acceso/mailtest', function(){
                       'clave1234');
           ;
 });
+
+Route::get('registro/mailtest', function(){
+  $paciente = new App\saludmobile\RegistroPaciente(
+                        ['nombre'=>'Eduardo Ariel',
+                        'apellido'=> 'Jerez',
+                        'documento'=> '26587435',
+                        'fecha_nacimiento' => '14101978',
+                        'sexo' => 'masculino',
+                        'cobertura' => 'Swiss Medical',
+                        'plan' => 'Docthos',
+                        'afiliado' => '12345686',
+                        'email' => 'arieljerez@gmail.com',
+                        'telefono_1' => '15 236 5665 6',
+                        'telefono_2'=> '0230 3023213 231']);
+
+
+    return new  App\Mail\RegistroPaciente($paciente);
+});
 /************************************************************************************************/
 
 Route::get('/acceso/registro', 'Auth\RegistroController@create')->name('registro');

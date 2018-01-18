@@ -31,11 +31,11 @@
     <div class="row">
       <div class="form-group col-md-3">
         <label for="dni" class="form-label">DNI</label>
-        <input type="text" class="form-control" placeholder="DNI" name="dni" id="dni" value="{{ old('documento',$documento) }}" required>
+        <input type="number" class="form-control" placeholder="DNI" name="dni" id="dni" value="{{ old('documento',$documento) }}" required>
       </div>
       <div class="form-group col-md-6">
         <label for="fecha_nacimiento" class="form-label">Fecha Nacimiento</label>
-        <input type="text" class="form-control" placeholder="Fecha Nacimiento" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ old('fecha_nacimiento',$fecha_nacimiento) }}" required>
+        <input type="date" class="form-control" placeholder="Fecha Nacimiento" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ old('fecha_nacimiento',$fecha_nacimiento) }}" required>
       </div>
       <div class="form-group col-md-3">
         <label for="Sexo" class="form-label">Sexo</label><br />
@@ -48,7 +48,7 @@
       <div class="col-md-6">
           <div class="form-group">
             <label for="mail" class="form-label">Correo Electrónico</label>
-            <input type="text" class="form-control" placeholder="Correo Electrónico" name="mail" id="mail" required>
+            <input type="text" class="form-control" placeholder="Correo Electrónico" name="email" id="email" required>
           </div>
           <div class="form-group">
             <div class="row">
