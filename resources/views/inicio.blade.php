@@ -20,5 +20,6 @@
     Haga click en <i class="fa fa-chevron-right" aria-hidden="true"></i> para tomar un nuevo turno
   </div>
 </div>
+<a href="{{route('turnos/create')}}" class="btn btn-primary">Nuevo Turno</a>
 
 @endsection

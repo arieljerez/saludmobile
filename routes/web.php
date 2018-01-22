@@ -81,7 +81,7 @@ Route::get('/misdatos', 'MisDatosController@index')->name('misdatos');
 /************************************************************************************************/
 
 Route::get('/ws', function (Request $request) {
-    $body =  '{"AutenticarPacienteResult":{"AuthToken":"iRwlkA8n1UjdYC4hbybFQbQZeLIKqOVQ","EstadoRespuesta":{"CodigoRespuesta":0,"Mensaje":"OK"},"Pacientes":[{"Apellido":"SYRIANI","CodigoCobertura":0,"CodigoPaciente":71666,"CodigoPersona":72942,"CodigoPlan":1,"Documento":"26587435","FechaNacimiento":"\/Date(-735598800000-0300)\/","Mail":"bebasolv@gmail.com","Nombre":"OLGA","Sexo":"F"}]}}';
+    $body =  '{"AutenticarPacienteResult":{"AuthToken":"iRwlkA8n1UjdYC4hbybFQbQZeLIKqOVQ","EstadoRespuesta":{"CodigoRespuesta":0,"Mensaje":"OK"},"Pacientes":[{"Apellido":"JEREZ","CodigoCobertura":0,"CodigoPaciente":71666,"CodigoPersona":72942,"CodigoPlan":1,"Documento":"26587435","FechaNacimiento":"\/Date(-735598800000-0300)\/","Mail":"arieljerez@gmail.com","Nombre":"Eduardo","Sexo":"M"}]}}';
     $array = (json_decode((string) $body, true));
     return response()->json($array);
 });

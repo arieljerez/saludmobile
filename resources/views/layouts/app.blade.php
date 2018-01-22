@@ -35,7 +35,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <img src="/logo-nav.jpg" height="40">
+                    <img src="{{asset('images/logo-nav.jpg')}}" height="40">
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
