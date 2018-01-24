@@ -29,6 +29,6 @@ class InicioController extends Controller
       $ultimosProfesionalesJson = '{"ultimosProfesionales":[{"Profesional":"Cesar Tomasin","Especialidad":"Ginecologia","Cobertura":"OSDE","PLAN":410,"Fecha":20171220 },{"Profesional":"Carmilo Logrono","Especialidad":"Clinica Medica","Cobertura":"OSDE","PLAN":410,"Fecha":20171220 },{"Profesional":"Sara Espinaga","Especialidad":"Oftalmologia","Cobertura":"OSDE","PLAN":410,"Fecha":20171210 }]  }';
       $ultimosProfesionales = (json_decode((string) $ultimosProfesionalesJson , true));
       $ultimosProfesionales = $ultimosProfesionales['ultimosProfesionales'];
-      return view('Inicio',compact('ultimosProfesionales'));
+      return view('inicio',compact('ultimosProfesionales'));
   }
 }

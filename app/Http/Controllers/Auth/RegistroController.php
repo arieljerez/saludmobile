@@ -28,8 +28,19 @@ class RegistroController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->input());
+      /*
+        $user = \App\User::UpdateOrCreate([
+          'name' => $request->input('documento'),
+          'email' => $request->input('email'),
+          'full_name' => $request->input('nombre') . '  '. $request->input('apellido'),
+          'access_token' => bcrypt(str_random(6))
+        ]);
+        $datos = $request->only(['apellido','nombre','fecha_nacimiento']);
+        $datos['historia_clinica'] = 4838294;
+        $datos['user_id'] = $user->id;
 
+        \App\saludmobile\remoteEntitys\Paciente::create($datos);
+        */
         $paciente = new \App\saludmobile\RegistroPaciente($request->input());
 
         \Mail::to(Request()->get('email'))

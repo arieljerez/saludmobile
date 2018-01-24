@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token', 'access_token'
     ];
+
+    public function paciente()
+    {
+        return $this->hasOne('\App\saludmobile\remoteEntitys\Paciente');
+    }
+
 }

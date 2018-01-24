@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\User;
 use Auth;
+use App\saludmobile\remoteEntitys\Paciente;
 
 class RemoteLoginController extends Controller
 {
@@ -24,7 +25,13 @@ class RemoteLoginController extends Controller
                 'email' => $pacienteRemoto->mail,
                 'access_token' => $this->token
             ]);
+
           Auth::loginUsingId($paciente->id);
+
+          Paciente::destroy($paciente->id);
+          //dd($pacienteRemoto->data);
+          Paciente::create($pacienteRemoto->data);
+          //Auth::loginUsingId($paciente->id);
           return redirect(route('inicio'));
       }
 
@@ -76,7 +83,7 @@ class RemoteLoginController extends Controller
       $paciente->mail = $session["Mail"];
       $paciente->nombre = $session["Nombre"];
       $paciente->sexo = $session["Sexo"];
-
+      $paciente->data = $datos;
       return $paciente;
     }
 }

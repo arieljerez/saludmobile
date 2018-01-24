@@ -23,7 +23,9 @@ class TurnoRegistroController extends Controller
      */
     public function create()
     {
-        return view('turnos.create');
+        $paciente = auth()->user()->paciente;
+
+        return view('turnos.create',compact('paciente'));
     }
 
     /**

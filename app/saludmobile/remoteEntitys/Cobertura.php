@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cobertura extends Model
 {
+  protected $table = 'pacientescoberturas';
+
   protected $fillable = [
                           'Codigo',
                     			'Descripcion',
@@ -14,6 +16,11 @@ class Cobertura extends Model
                     			'TipoContratacionCodigo',
                     			'TipoContratacionDescripcion'
                         ];
+  public function paciente()
+  {
+    return $this->belongsTo('\App\saludmobile\remoteEntitys\Paciente');
+  }
+
 }
 
 ?>

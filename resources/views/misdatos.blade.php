@@ -24,15 +24,11 @@
     <div class="panel-heading">Coberturas</div>
     <div class="panel-body">
       <div class="card">
-        @foreach ($Coberturas as $Cobertura)
-        <div class="card-block">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cobertura: {{ $Cobertura->Descripcion }}</li>
-            <li class="list-group-item">Plan: {{ $Cobertura->PlanDescripcion }}</li>
-            <li class="list-group-item">Número Afiliado: {{ $Cobertura->NumeroAfiliado }}</li>
-            <li class="list-group-item">TipoContratacion: {{ $Cobertura->TipoContratacionDescripcion }}</li>
-          </ul>
-        @endforeach
+        @component('partials.coberturas',[
+          'paciente' => $paciente,
+          'nextButton' => ''
+        ])
+        @endcomponent
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@
     <div class="row">
       <div class="form-group col-md-3">
         <label for="dni" class="form-label">DNI</label>
-        <input type="number" class="form-control" placeholder="DNI" name="dni" id="dni" value="{{ old('documento',$documento) }}" required>
+        <input type="number" class="form-control" placeholder="DNI" name="documento" id="documento" value="{{ old('documento',$documento) }}" required>
       </div>
       <div class="form-group col-md-6">
         <label for="fecha_nacimiento" class="form-label">Fecha Nacimiento</label>
