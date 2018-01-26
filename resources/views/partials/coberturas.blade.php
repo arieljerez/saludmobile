@@ -1,5 +1,5 @@
-@foreach ($paciente->coberturas as $cobertura)
-<div class="card-block">
+@foreach ($paciente->coberturas()->get() as $cobertura)
+
   @php
     $i = $cobertura->Descripcion."-".$loop->index;
   @endphp
@@ -10,8 +10,7 @@
         <i class="fa fa-credit-card fa-2x" aria-hidden="true" style="margin-right:3px"></i>
         {{$cobertura->Descripcion}}  <i class="fa fa-angle-down fa-1x" aria-hidden="true"></i>
 
-        {{$nextButton}}
-        <!-- <span class="btn btn-success btn-sm nextBtn pull-right" type="button"><i class="fa fa-chevron-right" aria-hidden="true"></i> </span> -->
+        {!! $nextButton !!}
       </a>
     </h5>
   </div>

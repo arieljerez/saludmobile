@@ -1,12 +1,13 @@
 .stepwizard-step p {
-    margin-top: 10px;
+    margin-top: 30px;
+    color: #666;
 }
 .stepwizard-row {
     display: table-row;
 }
 .stepwizard {
     display: table;
-//    width: 50%;
+    width: 100%;
     position: relative;
 }
 .stepwizard-step button[disabled] {

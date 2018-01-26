@@ -24,8 +24,7 @@ class MisDatosController extends Controller
    */
   public function index()
   {
-    $paciente = Paciente::find(auth()->user()->id);
-
+    $paciente = \Auth::user()->paciente;
     return view('misdatos',compact('paciente'));
   }
 }

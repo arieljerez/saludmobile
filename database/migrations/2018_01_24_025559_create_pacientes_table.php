@@ -18,6 +18,8 @@ class CreatePacientesTable extends Migration
           $table->string('nombre');
           $table->string('apellido');
           $table->string('historia_clinica');
+          $table->string('documento');
+          $table->string('email');
           $table->date('fecha_nacimiento');
           $table->unsignedinteger('user_id')->unsigned();
           $table->enum('sexo',['M','F']);
